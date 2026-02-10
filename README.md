@@ -22,3 +22,4 @@ GPU passthrough 테스트:
 sudo docker run --rm --gpus all nvidia/cuda:13.1.0-base nvidia-smi
 
 
+<img width="909" height="1035" alt="image" src="https://github.com/user-attachments/assets/c02d55c2-9303-4d6d-8905-e4e771f9092b" />
