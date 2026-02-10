@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake ninja-build \
     && rm -rf /var/lib/apt/lists/*
 
-# venv 생성 + pip 최신화 (이제 PEP668 안 걸림)
+# venv 안에서 pip 사용
 RUN python3 -m venv $VENV_PATH && \
     $VENV_PATH/bin/pip install -U pip setuptools wheel
 
@@ -28,11 +28,11 @@ RUN pip install --no-cache-dir \
     torch torchvision torchaudio \
     --extra-index-url https://download.pytorch.org/whl/cu130
 
-# Core LLM stack
+# LLM/ML stack (필요한거 더 추가 가능함.)
 RUN pip install --no-cache-dir \
-    transformers datasets accelerate tokenizers safetensors \
+    transformers datasets accelerate tokenizers safetensors sentencepiece \
     peft trl bitsandbytes optimum \
-    fastapi uvicorn[standard] \
+    fastapi uvicorn[standard] gradio \
     wandb mlflow hydra-core omegaconf optuna \
     einops torchmetrics
 
